@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: storeo-shop
+  name: shop
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: shop
+  template:
+    metadata:
+      labels:
+        app: shop
+    spec:
+      containers:
+        - image: minhdtb/storeo-shop
+          name: shop
+          ports:
+            - containerPort: 8080
+          env:
+            - name: AMQP_HOST
+              value: 'amqp.amqp.svc.cluster.local'
+            - name: AMQP_PORT
+              value: '5672'
+            - name: QUARKUS_DATASOURCE_REACTIVE_URL
+              value: 'postgresql://db.db.svc.cluster.local:5432/shop'
+            - name: QUARKUS_DATASOURCE_USERNAME
+              value: 'storeo'
+            - name: QUARKUS_DATASOURCE_PASSWORD
+              value: 'storeo'

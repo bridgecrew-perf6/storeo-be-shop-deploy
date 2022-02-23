@@ -1,0 +1,9 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: storeo
+images:
+  - name: minhdtb/storeo-shop
+    newTag: a14da1c431f8e0ad025012d42fc822d7f64224fd
