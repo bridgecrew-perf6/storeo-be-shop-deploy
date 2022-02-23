@@ -6,4 +6,4 @@ kind: Kustomization
 namespace: storeo
 images:
 - name: minhdtb/storeo-shop
-  newTag: e6782f7adf280c86dbac6d030ac8a68abcbf7f63
+  newTag: b5ffa016f454b14004edf308a7a054460cc172ca
